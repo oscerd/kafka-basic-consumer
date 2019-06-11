@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
+import java.util.UUID;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -22,7 +23,7 @@ public class SimpleConsumer {
 		props.put("bootstrap.servers", "localhost:9092");
 		props.put("key.deserializer", StringDeserializer.class.getName());
 		props.put("value.deserializer", StringDeserializer.class.getName());
-		props.put("group.id", "daje");
+		props.put("group.id", UUID.randomUUID().toString());
 
 		KafkaConsumer<String, String> cons = new KafkaConsumer<String, String>(props);
 		List<String> topics = new ArrayList<String>();
